@@ -9,13 +9,13 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  acno=""
-  pswd=""
-  amount=""
+  // acno=""
+  // pswd=""
+  // amount=""
 
-  acno1=""
-  pswd1=""
-  amount1=""
+  // acno1=""
+  // pswd1=""
+  // amount1=""
 
 
 depositForm=this.fb.group({
@@ -31,7 +31,9 @@ withdrawForm=this.fb.group({
 })
 
  user:any
- lDate:any 
+ lDate:any
+ acno=""
+
  constructor(private ds:DataService,private fb:FormBuilder,private router:Router) {
    this.user=this.ds.currentUser
    this.lDate=new Date()
@@ -79,5 +81,11 @@ logout(){
 localStorage.removeItem("currentUser")
 localStorage.removeItem("currentAcno")
 this.router.navigateByUrl("")
+}
+deleteAccount(){
+this.acno=JSON.parse(localStorage.getItem("currentAcno")||'')
+}
+cancel(){
+  this.acno=""
 }
 }
